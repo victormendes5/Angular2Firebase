@@ -1,0 +1,7 @@
+<div class="grid grid-pad">
+    <div *ngFor="let hero of myHeroes | async" lass="col-1-4">
+        <div class="module hero">
+            <h4>{{ hero.$value }}</h4>
+        </div>
+    </div>
+</div>
