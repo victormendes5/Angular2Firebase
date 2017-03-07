@@ -2,7 +2,6 @@ import { Component }                            from '@angular/core';
 import { Router }                               from '@angular/router';
 
 import { AngularFire, FirebaseListObservable }  from 'angularfire2';
-import { firebaseConfig }                       from './../model/firebase.config';
 
 @Component({
     moduleId: module.id,
@@ -12,9 +11,9 @@ import { firebaseConfig }                       from './../model/firebase.config
 })
 
 export class ListComponent {
-    myHeroes: FirebaseListObservable<any[]>;
+    myList: FirebaseListObservable<any[]>;
 
     constructor(private af: AngularFire) {
-        this.myHeroes = af.database.list('heroes/')
+        this.myList = af.database.list('heroes/')
     }
 }

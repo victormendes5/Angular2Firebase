@@ -3,6 +3,9 @@ import { NgModule }             from '@angular/core';
 import { FormsModule }          from '@angular/forms';
 import { HttpModule }           from '@angular/http';
 
+import { firebaseConfig }       from './../environments/firebase.config';
+import { AngularFireModule }    from 'angularfire2/index';
+
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AppRoutingModule }     from './app-routing.module';
@@ -14,9 +17,7 @@ import { HeroesComponent }      from './controller/heroes.component';
 import { HeroDetailComponent }  from './controller/hero-detail.component';
 import { HeroService }          from './controller/hero.service';
 import { HeroSearchComponent }  from './controller/hero-search.component';
-
-import { firebaseConfig }       from './../environments/firebase.config';
-import { AngularFireModule }    from 'angularfire2/index';
+import { AddComponent }         from './controller/add.component';
 
 @NgModule({
     imports: [
@@ -33,7 +34,8 @@ import { AngularFireModule }    from 'angularfire2/index';
         HeroDetailComponent,
         HeroesComponent,
         HeroSearchComponent,
-        ListComponent
+        ListComponent,
+        AddComponent
     ],
     providers: [ HeroService ],
     bootstrap: [ AppComponent ]
