@@ -1,4 +1,7 @@
 <div>
-    <label>Novo item:</label> <input #titleName />
-    <button (click)="add(titleName.value); titleName.value=''"> Adicionar </button>
+	<form (submit)="onAddSubmit()">
+	    <label>Novo item:</label>
+	    <input id="tit" class="form-control" type="text" [(ngModel)]="title" name="title"/>	    
+	    <button type="submit"> Adicionar </button>
+    </form>
 </div>

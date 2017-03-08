@@ -1,6 +1,9 @@
-import { Component } 				from '@angular/core';
+import { Component, OnInit } 					from '@angular/core';
+import { Router }			 					from '@angular/router';
 
-import { AngularFire }  			from 'angularfire2';
+import { FirebaseService }   					from './firebase.service';
+
+// import { AngularFire, FirebaseListObservable }  from 'angularfire2';
 
 @Component({
 	moduleId: module.id,
@@ -8,11 +11,23 @@ import { AngularFire }  			from 'angularfire2';
 	templateUrl: './../view/add.component.html',
 })
 
-export class AddComponent {
+export class AddComponent implements OnInit {
+	title: any;
 
-    constructor(private af: AngularFire) {
-    	const items = af.database.list('heroes');
-        items.push('a');
+    constructor(
+    	private firebaseService: FirebaseService,
+    	private router: Router
+    ) { }
+
+    ngOnInit() {
     }
 
+    onAddSubmit(){
+    	let listing = {
+    		title: this.title
+    	}
+
+	    this.firebaseService.addListing(listing);
+	    // this.router.navigate(['listings']);
+    }
 }
