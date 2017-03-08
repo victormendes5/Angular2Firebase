@@ -17,15 +17,4 @@ export class ListComponent {
     constructor(private af: AngularFire) {
         this.myList = af.database.list('heroes/')
     }
-
-    // listings: any;
-
-    // constructor(private firebaseService: FirebaseService) {}
-
-    // ngOnInit(){
-    // 	this.firebaseService.getListings().subscribe(listings => {
-    // 		console.log();
-    // 		this.listings = listings;
-    // 	});
-    // }
 }
