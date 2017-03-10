@@ -19,15 +19,16 @@ export class HeroService {
             .catch(this.handleError);
     }
 
-    // getHero(id: number): Promise<Hero> {
-    //     const url = `${this.heroesUrl}/${id}`;
-    //     return this.http.get(url)
-    //         .toPromise()
-    //         .then(response => response.json().data as Hero)
-    //         .catch(this.handleError);
-    // }
+    getHero(id: number): Promise<Hero> {
+        const url = `${this.heroesUrl}/${id}`;
+        return this.http.get(url)
+            .toPromise()
+            .then(response => response.json().data as Hero)
+            .catch(this.handleError);
+    }
 
     create(name: string): Promise<Hero> {
+        // var hero = localStorage.setItem('heroes', JSON.stringify({name: name}));
         return this.http
             .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
             .toPromise()
@@ -35,22 +36,22 @@ export class HeroService {
             .catch(this.handleError);
     }
 
-    // update(hero: Hero): Promise<Hero> {
-    //     const url = `${this.heroesUrl}/${hero.id}`;
-    //     return this.http
-    //         .put(url, JSON.stringify(hero), {headers: this.headers})
-    //         .toPromise()
-    //         .then(() => null)
-    //         .catch(this.handleError);
-    // }
+    update(hero: Hero): Promise<Hero> {
+        const url = `${this.heroesUrl}/${hero.id}`;
+        return this.http
+            .put(url, JSON.stringify(hero), {headers: this.headers})
+            .toPromise()
+            .then(() => null)
+            .catch(this.handleError);
+    }
 
-    // delete(id: number): Promise<void> {
-    //     const url = `${this.heroesUrl}/${id}`;
-    //     return this.http.delete(url, {headers: this.headers})
-    //         .toPromise()
-    //         .then(() => null)
-    //         .catch(this.handleError);
-    // }
+    delete(id: number): Promise<void> {
+        const url = `${this.heroesUrl}/${id}`;
+        return this.http.delete(url, {headers: this.headers})
+            .toPromise()
+            .then(() => null)
+            .catch(this.handleError);
+    }
 
     private handleError(error: any): Promise<any> {
         console.log('An error occured', error); // for demo purposes only
