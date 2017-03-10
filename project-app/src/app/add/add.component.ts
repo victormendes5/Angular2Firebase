@@ -1,17 +1,16 @@
-import { Component, OnInit } 					from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router }			 					from '@angular/router';
 
-import { FirebaseService }   					from './firebase.service';
-
-// import { AngularFire, FirebaseListObservable }  from 'angularfire2';
+import { FirebaseService }   					from './../controller/firebase.service';
 
 @Component({
-	moduleId: module.id,
-	selector: 'my-add',
-	templateUrl: './../view/add.component.html',
+	selector: 'app-add',
+	templateUrl: './add.component.html',
+	styleUrls: ['./add.component.css']
 })
 
 export class AddComponent implements OnInit {
+
 	title: any;
 
     constructor(
@@ -30,4 +29,5 @@ export class AddComponent implements OnInit {
 	    this.firebaseService.addListing(listing);
 	    this.router.navigate(['list']);
     }
+
 }

@@ -12,7 +12,7 @@ import { HeroService }		 from './hero.service';
 })
 
 export class DashboardComponent implements OnInit {
-	heroes: Hero[] = [];
+	// heroes: Hero[] = [];
 
 	constructor(
 		private router: Router,
@@ -20,12 +20,12 @@ export class DashboardComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-	    this.heroService.getHeroes()
-		    .then(heroes => this.heroes = heroes.slice(0, 4));
+	    // this.heroService.getHeroes()
+		   //  .then(heroes => this.heroes = heroes.slice(0, 4));
 	}
 
-	gotoDetail(hero: Hero): void {
-		let link = ['/detail', hero.id];
-		this.router.navigate(link);
-	}
+	// gotoDetail(hero: Hero): void {
+	// 	let link = ['/detail', hero.id];
+	// 	this.router.navigate(link);
+	// }
 }

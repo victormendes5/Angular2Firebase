@@ -4,8 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent }   from './controller/dashboard.component';
 import { HeroesComponent }      from './controller/heroes.component';
 import { HeroDetailComponent }  from './controller/hero-detail.component';
-import { ListComponent }  		from './controller/list.component';
-import { AddComponent }  		from './controller/add.component';
+import { ListComponent }  		from './list/list.component';
+import { AddComponent }  		from './add/add.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: '/dashboard', pathMatch: 'full' },
