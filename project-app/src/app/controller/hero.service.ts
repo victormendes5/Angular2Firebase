@@ -10,7 +10,13 @@ export class HeroService {
     private heroesUrl = 'api/heroes';
     private headers = new Headers({'Content-Type': 'application/json'});
 
-    constructor(private http: Http) { }
+    // newTodo: string;
+    // todos: any;
+    // todoObj: any;
+
+    constructor(private http: Http) {
+        // this.todoObj = localStorage.getItem('currentUser');
+    }
 
     getHeroes(): Promise<Hero[]> {
         return this.http.get(this.heroesUrl)
@@ -28,7 +34,6 @@ export class HeroService {
     }
 
     create(name: string): Promise<Hero> {
-        // var hero = localStorage.setItem('heroes', JSON.stringify({name: name}));
         return this.http
             .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
             .toPromise()

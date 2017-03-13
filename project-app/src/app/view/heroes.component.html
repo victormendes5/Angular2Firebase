@@ -1,8 +1,8 @@
-<div>
+<!-- <div>
     <label>Hero name:</label> <input #heroName />
     <button (click)="add(heroName.value); heroName.value=''"> Add </button>
-</div>
-<ul class="heroes">
+</div> -->
+<!-- <ul class="heroes">
     <li *ngFor="let hero of heroes" (click)="onSelect(hero)"
         [class.selected]="hero === selectedHero">
         <span class="badge">{{hero.id}}</span>
@@ -13,4 +13,24 @@
 <div *ngIf="selectedHero">
     <h2>{{selectedHero.name | uppercase}} is my hero</h2>
     <button (click)="gotoDetail()">View Details</button>
+</div> -->
+
+<div>
+    <form (submit)="addTodo($token)">
+        <label>Name:</label>
+        <input [(ngModel)]="newTodo" (keyup.enter)="newTodo=''" class="textfield" name="newTodo">
+        <button  type="submit" [disabled]="newTodo===''">Add Todo</button>
+    </form>
+</div>
+
+<ul class="heroes">
+    <li *ngFor="let todo of todos; let i=index ">
+        <input type="checkbox" class="checkbox" [(ngModel)]="todo.done" />
+        <span [ngClass]="{'checked': todo.done}">{{ todo.newTodo }}</span>
+        <span (click)="deleteTodo(i)" class="delete-icon">x</span>
+    </li>
+</ul>
+
+<div>
+    <button (click)="deleteSelectedTodos()">Delete Selected</button>
 </div>
