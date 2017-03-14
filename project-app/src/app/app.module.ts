@@ -10,7 +10,6 @@ import { AngularFireModule }    from 'angularfire2/index';
 
 import { AppRoutingModule }     from './app.routes';
 import { AppComponent }         from './app.component';
-import { DashboardComponent }   from './controller/dashboard.component';
 import { ListComponent }        from './list/list.component';
 import { HeroesComponent }      from './controller/heroes.component';
 import { HeroDetailComponent }  from './controller/hero-detail.component';
@@ -28,7 +27,6 @@ import { AddComponent }         from './add/add.component';
     ],
     declarations: [ 
         AppComponent,
-        DashboardComponent,
         HeroDetailComponent,
         HeroesComponent,
         HeroSearchComponent,

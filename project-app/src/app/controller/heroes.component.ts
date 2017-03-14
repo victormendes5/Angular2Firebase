@@ -8,7 +8,7 @@ import { HeroService }          from './hero.service';
     moduleId: module.id,
     selector: 'my-heroes',
     templateUrl: './../view/heroes.component.html',
-    styleUrls: [ './../view/css/heroes.component.css' ]
+    styleUrls: [ './../view/css/heroes.component.css', './../../assets/css/bootstrap.min.css' ]
 })
 
 export class HeroesComponent implements OnInit {
@@ -17,6 +17,7 @@ export class HeroesComponent implements OnInit {
 
     currentItem: string;
     newTodo: string;
+    newMessage: string;
     todos: any;
 
     // constructor(
@@ -44,14 +45,14 @@ export class HeroesComponent implements OnInit {
     //         });
     // }
 
-    addTodo() {
-        this.todos.push({
-            newTodo: this.newTodo,
-            done: false
-        });
-        this.newTodo = '';
-        localStorage.setItem('currentItem', JSON.stringify(this.todos));
-    }
+    // addTodo() {
+    //     this.todos.push({
+    //         newTodo: this.newTodo,
+    //         done: false
+    //     });
+    //     this.newTodo = '';
+    //     localStorage.setItem('currentItem', JSON.stringify(this.todos));
+    // }
 
     deleteTodo(index) {
         this.todos.splice(index, 1);

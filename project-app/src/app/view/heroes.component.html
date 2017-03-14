@@ -15,22 +15,30 @@
     <button (click)="gotoDetail()">View Details</button>
 </div> -->
 
-<div>
-    <form (submit)="addTodo()">
+
+<!-- <form (submit)="addTodo()">
+    <div class="form-group">
         <label>Name:</label>
-        <input [(ngModel)]="newTodo" class="textfield" name="newTodo">
-        <button  type="submit">Add Todo</button>
-    </form>
-</div>
+        <input [(ngModel)]="newTodo" class="textfield form-control" name="newTodo">
+    </div>
+    <button type="submit" class="btn btn-success">Adicionar</button>
+</form> -->
+<div class="container">
+    <ul class="list-group">
+        <li *ngFor="let todo of todos; let i=index" class="list-group-item">
+            <!-- <input type="checkbox" [(ngModel)]="todo.done" /> -->
+            <label [ngClass]="{'checked': todo.done}">{{ todo.newTodo }}</label>
+            <!-- <button (click)="deleteTodo(i)" class="btn btn-danger">x</button> -->
+            <label [ngClass]="{'checked': todo.done}">{{ todo.newMessage }}</label>
+        </li>
+    </ul>
 
-<ul class="heroes">
-    <li *ngFor="let todo of todos; let i=index ">
-        <input type="checkbox" class="checkbox" [(ngModel)]="todo.done" />
-        <span [ngClass]="{'checked': todo.done}">{{ todo.newTodo }}</span>
-        <span (click)="deleteTodo(i)" class="delete-icon">x</span>
-    </li>
-</ul>
-
-<div>
-    <button (click)="deleteSelectedTodos()">Delete Selected</button>
+    <div>
+        <button routerLink="/add" routerLinkActive="active" class="btn btn-success">Adicionar</button>
+        <button (click)="deleteSelectedTodos()" class="btn btn-danger">Excluir</button>
+    </div>
 </div>
+<!-- <div *ngIf="selectedHero">
+    <h2>{{selectedHero.name | uppercase}} is my hero</h2>
+    <button (click)="gotoDetail()">View Details</button>
+</div> -->

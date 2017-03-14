@@ -1,7 +1,23 @@
-<div>
+<!-- <div>
 	<form (submit)="onAddSubmit()">
 	    <label>Novo item:</label>
 	    <input id="tit" class="form-control" type="text" [(ngModel)]="title" name="title"/>	    
 	    <button type="submit"> Adicionar </button>
     </form>
+</div> -->
+<div class="container">
+	<form (submit)="addTodo()">
+
+	    <div class="form-group">
+	        <label>Titulo:</label>
+	        <input [(ngModel)]="newTodo" class="textfield form-control" name="newTodo">
+	    </div>
+
+	    <div class="form-group">
+	        <label>Mensagem:</label>
+	        <input [(ngModel)]="newMessage" class="textfield form-control" name="newMessage">
+	    </div>
+
+	    <button type="submit" class="btn btn-success">Salvar</button>
+	</form>
 </div>
