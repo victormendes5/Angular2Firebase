@@ -16,10 +16,10 @@
 </div> -->
 
 <div>
-    <form (submit)="addTodo($token)">
+    <form (submit)="addTodo()">
         <label>Name:</label>
-        <input [(ngModel)]="newTodo" (keyup.enter)="newTodo=''" class="textfield" name="newTodo">
-        <button  type="submit" [disabled]="newTodo===''">Add Todo</button>
+        <input [(ngModel)]="newTodo" class="textfield" name="newTodo">
+        <button  type="submit">Add Todo</button>
     </form>
 </div>
 

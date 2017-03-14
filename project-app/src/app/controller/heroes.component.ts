@@ -12,8 +12,8 @@ import { HeroService }          from './hero.service';
 })
 
 export class HeroesComponent implements OnInit {
-    heroes: Hero[];
-    selectedHero: Hero;
+    // heroes: Hero[];
+    // selectedHero: Hero;
 
     currentItem: string;
     newTodo: string;
@@ -25,9 +25,7 @@ export class HeroesComponent implements OnInit {
 
     constructor(){
         this.currentItem = (localStorage.getItem('currentItem')!==null) ? JSON.parse(localStorage.getItem('currentItem')) : [  ];
-        localStorage.setItem('currentItem', JSON.stringify(this.currentItem));
-        this.newTodo = '';
-        this.todos = [];
+        this.todos = this.currentItem;
     }
 
     // getHeroes(): void {
@@ -46,7 +44,7 @@ export class HeroesComponent implements OnInit {
     //         });
     // }
 
-    addTodo(event) {
+    addTodo() {
         this.todos.push({
             newTodo: this.newTodo,
             done: false
