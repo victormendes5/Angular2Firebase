@@ -8,7 +8,7 @@ import { HeroService }          from './hero.service';
     moduleId: module.id,
     selector: 'my-heroes',
     templateUrl: './../view/heroes.component.html',
-    styleUrls: [ './../view/css/heroes.component.css', './../../assets/css/bootstrap.min.css' ]
+    styleUrls: [ './../../assets/css/bootstrap.min.css','./../view/css/heroes.component.css' ]
 })
 
 export class HeroesComponent implements OnInit {
@@ -56,15 +56,17 @@ export class HeroesComponent implements OnInit {
 
     deleteTodo(index) {
         this.todos.splice(index, 1);
-    }
 
-    deleteSelectedTodos() {
-        //need ES5 to reverse loop in order to splice by index
-        for(var i=(this.todos.length -1); i > -1; i--) {
-            if(this.todos[i].completed) {
-                this.todos.splice(i, 1);
-            }
-        }
+        // oldTodos = $scope.todos;
+        // $scope.todos = [];
+
+        // angular.forEach(oldTodos, function(todo){
+        //     if (!todo.done)
+        //         $scope.todos.push(todo);
+        //     console.log('Removido do local storage com sucesso!');
+        // });
+
+        localStorage.setItem('currentItem', JSON.stringify(this.todos));
     }
 
     // delete(hero: Hero): void {

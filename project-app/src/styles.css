@@ -4,5 +4,15 @@ body {
 	font-family: 'Helvetica', 'Verdana', sans-serif;
 }
 .header-bcgd {
-	background-color: #3fc35f;
+	background-color: #5cb85c;
+}
+.title-app {
+	margin-left: 15px;
+	color: #fff;
+}
+.btn-drop {
+	float: right;
+	/*margin: -11px -16px;
+	padding: 11.7px;
+	border-radius: 0px;*/
 }
