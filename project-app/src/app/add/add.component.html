@@ -6,16 +6,21 @@
     </form>
 </div> -->
 <div class="container">
-	<form (submit)="addTodo()">
+	<form (submit)="addTodo($event)">
+
+		<div class="form-group">
+	        <label>Id:</label>
+	        <input [(ngModel)]="id" class="textfield form-control" name="id" />
+	    </div>
 
 	    <div class="form-group">
 	        <label>Titulo:</label>
-	        <input [(ngModel)]="newTodo" class="textfield form-control" name="newTodo">
+	        <input [(ngModel)]="title" class="textfield form-control" name="title">
 	    </div>
 
 	    <div class="form-group">
 	        <label>Mensagem:</label>
-	        <input [(ngModel)]="newMessage" class="textfield form-control" name="newMessage">
+	        <input [(ngModel)]="message" class="textfield form-control" name="message">
 	    </div>
 
 	    <button type="submit" class="btn btn-success">Salvar</button>

@@ -1,7 +1,32 @@
-<div class="grid grid-pad">
+<!-- Exibe itens fo Firebase -->
+<!-- <div class="grid grid-pad">
     <div *ngFor="let item of myList | async" lass="col-1-4">
         <div class="module hero">
             <h4>{{ item.title }}</h4>
         </div>
     </div>
+</div> -->
+
+<div class="container">
+    <ul *ngFor="let todo of todos; let i=index" (click)="gotoDetail(todo)" class="list-group">
+        <li class="list-group-item active">
+            <label [ngClass]="{'checked': todo.done}">{{ todo.title }}</label>
+            <button (click)="deleteTodo(i)" class="btn btn-danger btn-drop"
+                                            style="margin: -11px -16px; padding: 11.7px; border-radius: 0px;">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            </button>
+        </li>
+        <li class="list-group-item">
+            <label [ngClass]="{'checked': todo.done}">{{ todo.message }}</label>
+        </li>
+    </ul>
+
+    <div style="float: right;">
+        <button routerLink="/add" routerLinkActive="active" class="btn btn-success">Adicionar</button>
+    </div>
 </div>
+<!-- Redireciona para oura view -->
+<!-- <div *ngIf="selectedItem">
+    <h2>{{selectedItem.name | uppercase}} is my hero</h2>
+    <button (click)="gotoDetail()">View Details</button>
+</div> -->

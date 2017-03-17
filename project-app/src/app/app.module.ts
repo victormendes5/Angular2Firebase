@@ -4,18 +4,17 @@ import { FormsModule }          from '@angular/forms';
 import { HttpModule }           from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
-import { FirebaseService }      from './controller/firebase.service';
+import { FirebaseService }      from './../environments/firebase.service';
 import { firebaseConfig }       from './../environments/firebase.config';
 import { AngularFireModule }    from 'angularfire2/index';
 
 import { AppRoutingModule }     from './app.routes';
 import { AppComponent }         from './app.component';
 import { ListComponent }        from './list/list.component';
-import { HeroesComponent }      from './controller/heroes.component';
-import { HeroDetailComponent }  from './controller/hero-detail.component';
-import { HeroService }          from './controller/hero.service';
-import { HeroSearchComponent }  from './controller/hero-search.component';
 import { AddComponent }         from './add/add.component';
+import { DetailComponent }      from './detail/detail.component';
+import { ItemService }          from './item.service';
+import { LocalStorageService }  from './localstorage.service';
 
 @NgModule({
     imports: [
@@ -27,14 +26,13 @@ import { AddComponent }         from './add/add.component';
     ],
     declarations: [ 
         AppComponent,
-        HeroDetailComponent,
-        HeroesComponent,
-        HeroSearchComponent,
         ListComponent,
-        AddComponent
+        AddComponent,
+        DetailComponent,
     ],
     providers: [ 
-        HeroService,
+        ItemService,
+        LocalStorageService,
         FirebaseService
     ],
     bootstrap: [ AppComponent ]

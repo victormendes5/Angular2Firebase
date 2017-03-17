@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Router }			 from '@angular/router';
+import { Component, OnInit }     from '@angular/core';
+import { Router }                from '@angular/router';
 
-import { FirebaseService }   from './../controller/firebase.service';
+import { FirebaseService }       from './../../environments/firebase.service';
+
+import { Item }                  from './../item.model';
+import { LocalStorageService }   from './../localstorage.service';
 
 @Component({
 	selector: 'app-add',
@@ -10,7 +13,7 @@ import { FirebaseService }   from './../controller/firebase.service';
 })
 
 export class AddComponent implements OnInit {
-
+/*    INICIO FIREBASE    */
 	// title: any;
 
  //    constructor(
@@ -29,30 +32,42 @@ export class AddComponent implements OnInit {
 	//     this.firebaseService.addListing(listing);
 	//     this.router.navigate(['list']);
  //    }
+ /*    FIM FIREBASE    */
 
     currentItem: string;
-    newTodo: string;
-    newMessage: string;
     todos: any;
 
-    constructor(private router: Router) {
-        this.currentItem = (localStorage.getItem('currentItem')!==null) ? JSON.parse(localStorage.getItem('currentItem')) : [  ];
+    // id: number;
+    // title: string;
+    // message: string;
+
+    constructor(private router: Router,
+                private storageService: LocalStorageService,
+                private item: Item) {
+        this.currentItem = (localStorage.getItem('currentItem') !== null) ? JSON.parse(localStorage.getItem('currentItem')) : [  ];
         this.todos = this.currentItem;
     }
 
-    addTodo() {
-        this.todos.push({
-            newTodo: this.newTodo,
-            newMessage: this.newMessage,
-            done: false
-        });
-        this.newTodo = '';
-        this.newMessage = '';
-        localStorage.setItem('currentItem', JSON.stringify(this.todos));
+    // addTodo() {
+    //     this.todos.push({
+    //         id: this.id,
+    //         title: this.title,
+    //         message: this.message,
+    //         done: false
+    //     });
 
-        this.router.navigate(['./heroes']);
+    //     this.title = '';
+    //     this.message = '';
+    //     localStorage.setItem('currentItem', JSON.stringify(this.todos));
+
+    //     this.router.navigate(['./list']);
+    // }
+
+    addTodo(event) {
+        this.storageService.save(this.item.id, this.item.title, this.item.message, this.item.done)
+        this.router.navigate(['./list']);
     }
 
-   ngOnInit() { }
+   ngOnInit() {}
 
 }
