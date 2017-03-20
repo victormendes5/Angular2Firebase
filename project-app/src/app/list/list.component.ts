@@ -3,11 +3,9 @@ import { Router }                               from '@angular/router';
 
 import { Item }                                 from './../item.model';
 import { FirebaseService }   					from './../../environments/firebase.service';
+import { LocalStorageService }                  from './../localstorage.service';
 
 import { AngularFire, FirebaseListObservable }  from 'angularfire2';
-
-// import { Hero }                 from './hero';
-// import { HeroService }          from './hero.service';
 
 @Component({
     moduleId: module.id,
@@ -22,11 +20,14 @@ export class ListComponent implements OnInit {
  //    constructor(private af: AngularFire) {
  //        this.myList = af.database.list('heroes/')
  //    }
- 
+     
+    lista: Item[];
+
     currentItem: string;
     todos: any;
 
-    constructor(private router: Router){
+    constructor(private router: Router,
+                private locaStorage: LocalStorageService){
         this.currentItem = (localStorage.getItem('currentItem')!==null) ? JSON.parse(localStorage.getItem('currentItem')) : [  ];
         this.todos = this.currentItem;
     }
@@ -36,11 +37,14 @@ export class ListComponent implements OnInit {
         localStorage.setItem('currentItem', JSON.stringify(this.todos));
     }
 
-    ngOnInit(): void {}
-
-    gotoDetail(item: Item): void {
-        let link = ['/detail', item.id];
-        this.router.navigate(link);
+    ngOnInit(): void {
+        // this.lista = this.locaStorage.save();
+        // console.log('lista: ' + this.lista);
     }
+
+    // gotoDetail(item: Item): void {
+    //     let link = ['/detail', item.id];
+    //     this.router.navigate(link);
+    // }
 
 }

@@ -37,9 +37,9 @@ export class AddComponent implements OnInit {
     currentItem: string;
     todos: any;
 
-    // id: number;
-    // title: string;
-    // message: string;
+    id: number;
+    title: string;
+    message: string;
 
     constructor(private router: Router,
                 private storageService: LocalStorageService,
@@ -48,25 +48,25 @@ export class AddComponent implements OnInit {
         this.todos = this.currentItem;
     }
 
-    // addTodo() {
-    //     this.todos.push({
-    //         id: this.id,
-    //         title: this.title,
-    //         message: this.message,
-    //         done: false
-    //     });
+    addTodo() {
+        this.todos.push({
+            id: this.id,
+            title: this.title,
+            message: this.message,
+            done: false
+        });
 
-    //     this.title = '';
-    //     this.message = '';
-    //     localStorage.setItem('currentItem', JSON.stringify(this.todos));
+        this.title = '';
+        this.message = '';
+        localStorage.setItem('currentItem', JSON.stringify(this.todos));
 
-    //     this.router.navigate(['./list']);
-    // }
-
-    addTodo(event) {
-        this.storageService.save(this.item.id, this.item.title, this.item.message, this.item.done)
         this.router.navigate(['./list']);
     }
+
+    // addTodo() {
+    //     this.storageService.save();
+    //     this.router.navigate(['./list']);
+    // }
 
    ngOnInit() {}
 

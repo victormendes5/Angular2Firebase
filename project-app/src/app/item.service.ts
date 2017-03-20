@@ -28,19 +28,19 @@ export class ItemService {
             .catch(this.handleError);
     }
 
-    save() {
-        this.todos.push({
-            id: this.item.id,
-            title: this.item.title,
-            message: this.item.message,
-            done: false
-        });
+    // save() {
+    //     this.todos.push({
+    //         id: this.item.id,
+    //         title: this.item.title,
+    //         message: this.item.message,
+    //         done: false
+    //     });
 
-        this.todos.title = '';
-        this.todos.message = '';
+    //     this.todos.title = '';
+    //     this.todos.message = '';
 
-        localStorage.setItem('currentItem', JSON.stringify(this.todos));
-    }
+    //     localStorage.setItem('currentItem', JSON.stringify(this.todos));
+    // }
 
     private handleError(error: any): Promise<any> {
         console.log('An error occured', error);
