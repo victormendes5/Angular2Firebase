@@ -34,39 +34,22 @@ export class AddComponent implements OnInit {
  //    }
  /*    FIM FIREBASE    */
 
-    currentItem: string;
     todos: any;
 
-    id: number;
-    title: string;
-    message: string;
-
     constructor(private router: Router,
-                private storageService: LocalStorageService,
-                private item: Item) {
-        this.currentItem = (localStorage.getItem('currentItem') !== null) ? JSON.parse(localStorage.getItem('currentItem')) : [  ];
-        this.todos = this.currentItem;
+                private storageService: LocalStorageService) {
     }
 
-    addTodo() {
-        this.todos.push({
-            id: this.id,
-            title: this.title,
-            message: this.message,
-            done: false
-        });
+    addTodo(value, event) {
+        event.preventDefault();
 
-        this.title = '';
-        this.message = '';
-        localStorage.setItem('currentItem', JSON.stringify(this.todos));
+        value.done = false;
 
+        this.storageService.save(value)
+        this.todos = this.storageService.getTodos();
+        
         this.router.navigate(['./list']);
     }
-
-    // addTodo() {
-    //     this.storageService.save();
-    //     this.router.navigate(['./list']);
-    // }
 
    ngOnInit() {}
 

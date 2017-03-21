@@ -15,31 +15,26 @@ import { AngularFire, FirebaseListObservable }  from 'angularfire2';
 })
 
 export class ListComponent implements OnInit {
+/*    INICIO FIREBASE    */
 	// myList: FirebaseListObservable<any[]>;
 
  //    constructor(private af: AngularFire) {
  //        this.myList = af.database.list('heroes/')
  //    }
-     
-    lista: Item[];
-
-    currentItem: string;
+/*    FIM FIREBASE    */
+    
     todos: any;
 
     constructor(private router: Router,
-                private locaStorage: LocalStorageService){
-        this.currentItem = (localStorage.getItem('currentItem')!==null) ? JSON.parse(localStorage.getItem('currentItem')) : [  ];
-        this.todos = this.currentItem;
+                private storageService: LocalStorageService){
     }
 
     deleteTodo(index) {
         this.todos.splice(index, 1);
-        localStorage.setItem('currentItem', JSON.stringify(this.todos));
     }
 
     ngOnInit(): void {
-        // this.lista = this.locaStorage.save();
-        // console.log('lista: ' + this.lista);
+        this.todos = this.storageService.getTodos();
     }
 
     // gotoDetail(item: Item): void {

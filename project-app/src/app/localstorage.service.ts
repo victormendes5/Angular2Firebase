@@ -1,53 +1,29 @@
-import { Injectable } from '@angular/core';
-import { Item }       from './item.model';
+import { Injectable }     from '@angular/core';
+import { Http, Response } from '@angular/http';
 
+import { Item }           from './item.model';
+
+import 'rxjs/Rx';
 
 @Injectable()
 export class LocalStorageService {
 
-    // saved: string = localStorage.getItem('currentItem');
-    // currentItem: string = (localStorage.getItem('currentItem') !== null) ? JSON.parse(this.saved) : [  ];
-    // todos: any = this.currentItem;
+    currentItem: string;
+    todos: any;
 
-    // lista = [
-    //     {
-    //         id: 1,
-    //         title : 'test item 1',
-    //         message: 'mensagem de teste',
-    //         done: false
-    //     }
-    // ];
+    constructor() {
+        this.currentItem = (localStorage.getItem('currentItem')!==null) ? JSON.parse(localStorage.getItem('currentItem')) : [  ];
+        this.todos = this.currentItem;
+    }
 
-    // save(){
-    //     return this.lista;
-    // }
+    getTodos() {
+        JSON.parse(localStorage.getItem('currentItem'));
+        return this.todos;
+    }
 
-    // save(id, title, message, done) {
-    //     this.todos.push({
-    //         id: id,
-    //         title: title,
-    //         message: message,
-    //         done: false
-    //     });
-        
-    //     localStorage.setItem('currentItem', JSON.stringify(this.todos));
-    // }
-
-    // get(title) {
-    //     let data = JSON.parse(localStorage.getItem('currentItem'));
-    	
-    //     if (!data) {
-    // 		return undefined;
-    // 	}
-
-    //     if (title) {
-    //     	if(data[title]) {
-    //     		return data[title];
-    //     	} else {
-    //     		return {};
-    //     	}
-    //     }
-    // 	return data ;
-    // }
+    save(todo){
+        this.todos.push(todo);
+        localStorage.setItem('currentItem', JSON.stringify(this.todos));
+    }
 
 }
