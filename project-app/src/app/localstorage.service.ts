@@ -11,17 +11,24 @@ export class LocalStorageService {
     currentItem: string;
     todos: any;
 
+    oldItem: string;
+
     constructor() {
         this.currentItem = (localStorage.getItem('currentItem')!==null) ? JSON.parse(localStorage.getItem('currentItem')) : [  ];
         this.todos = this.currentItem;
     }
 
-    getTodos() {
+    getLocalStorage() {
         JSON.parse(localStorage.getItem('currentItem'));
         return this.todos;
     }
 
-    save(todo){
+    deleteLocalStorage(index){
+        this.oldItem = this.todos.splice(index, 1);
+        localStorage.setItem('currentItem', JSON.stringify(this.oldItem));
+    }
+
+    saveLocalStorage(todo){
         this.todos.push(todo);
         localStorage.setItem('currentItem', JSON.stringify(this.todos));
     }

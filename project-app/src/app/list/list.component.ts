@@ -30,11 +30,12 @@ export class ListComponent implements OnInit {
     }
 
     deleteTodo(index) {
-        this.todos.splice(index, 1);
+        // this.todos.splice(index, 1);
+        this.storageService.deleteLocalStorage(index);
     }
 
     ngOnInit(): void {
-        this.todos = this.storageService.getTodos();
+        this.todos = this.storageService.getLocalStorage();
     }
 
     // gotoDetail(item: Item): void {

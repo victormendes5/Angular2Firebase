@@ -45,8 +45,8 @@ export class AddComponent implements OnInit {
 
         value.done = false;
 
-        this.storageService.save(value)
-        this.todos = this.storageService.getTodos();
+        this.storageService.saveLocalStorage(value)
+        this.todos = this.storageService.getLocalStorage();
         
         this.router.navigate(['./list']);
     }
