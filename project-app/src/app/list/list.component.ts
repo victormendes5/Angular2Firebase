@@ -23,24 +23,29 @@ export class ListComponent implements OnInit {
  //    }
 /*    FIM FIREBASE    */
     
-    todos: any;
+    private objects: any;
+
+    selectedData: Item;
 
     constructor(private router: Router,
                 private storageService: LocalStorageService){
     }
 
     deleteTodo(index) {
-        // this.todos.splice(index, 1);
-        this.storageService.deleteLocalStorage(index);
+        this.objects.splice(index, 1);
+        // this.storageService.deleteLocalStorage(index);
     }
 
     ngOnInit(): void {
-        this.todos = this.storageService.getLocalStorage();
+        this.objects = this.storageService.getLocalStorage();
     }
 
-    // gotoDetail(item: Item): void {
-    //     let link = ['/detail', item.id];
-    //     this.router.navigate(link);
-    // }
+    onSelect(item: Item): void {
+        this.selectedData = item;
+    }
+
+    gotoDetail(): void {
+        this.router.navigate(['/detail', this.selectedData.id]);
+    }
 
 }

@@ -34,7 +34,7 @@ export class AddComponent implements OnInit {
  //    }
  /*    FIM FIREBASE    */
 
-    todos: any;
+    private objects: any;
 
     constructor(private router: Router,
                 private storageService: LocalStorageService) {
@@ -46,7 +46,7 @@ export class AddComponent implements OnInit {
         value.done = false;
 
         this.storageService.saveLocalStorage(value)
-        this.todos = this.storageService.getLocalStorage();
+        this.objects = this.storageService.getLocalStorage();
         
         this.router.navigate(['./list']);
     }

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit }        from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 
-import { ItemService }              from './../item.service';
 import { Item }                     from './../item.model';
+import { LocalStorageService }      from './../localstorage.service';
 
 import 'rxjs/add/operator/switchMap';
 
@@ -11,22 +11,22 @@ import 'rxjs/add/operator/switchMap';
 	moduleId: module.id,
 	selector: 'app-detail',
 	templateUrl: './detail.component.html',
-	styleUrls: ['./detail.component.css']
+	styleUrls: [ './detail.component.css' ]
 })
 
 export class DetailComponent implements OnInit {
-	item: Item;
+	private selectedData: Item;
 
-    constructor(
-        private itemService: ItemService,
-        private route: ActivatedRoute,
-        private location: Location
-        ) {}
+    constructor(private route: ActivatedRoute,
+                private location: Location,
+                private storageService: LocalStorageService) {
+    }
 
     ngOnInit(): void {
-        this.route.params
-        .switchMap((params: Params) => this.itemService.getItem(+params['id']))
-        .subscribe(item => this.item = item);
+        // const id = +this.route.snapshot.params["id"];
+
+        // this.storageService.getCurrentData(id)
+        //     .then((selectedData) => { this.selectedData = selectedData; });
     }
 
     goBack(): void {
@@ -34,7 +34,7 @@ export class DetailComponent implements OnInit {
     }
 
     // save(): void {
-    //     this.itemService.update(this.item)
+    //     this.storageService.update(this.data)
     //     .then(() => this.goBack());
     // }
 

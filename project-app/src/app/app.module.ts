@@ -13,7 +13,6 @@ import { AppComponent }         from './app.component';
 import { ListComponent }        from './list/list.component';
 import { AddComponent }         from './add/add.component';
 import { DetailComponent }      from './detail/detail.component';
-import { ItemService }          from './item.service';
 import { LocalStorageService }  from './localstorage.service';
 
 @NgModule({
@@ -31,7 +30,6 @@ import { LocalStorageService }  from './localstorage.service';
         DetailComponent,
     ],
     providers: [ 
-        ItemService,
         LocalStorageService,
         FirebaseService
     ],
