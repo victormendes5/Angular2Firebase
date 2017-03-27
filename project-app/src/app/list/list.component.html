@@ -9,7 +9,7 @@
 
 <div class="container">
     <div>
-        <ul *ngFor="let todo of objects; let i=index" [class.selected]="todo === selectedData" (click)="onSelect(todo)" class="list-group">
+        <ul *ngFor="let todo of objects; let i=index" [class.selected]="objects === selectedData" (click)="onSelect(objects)" class="list-group">
             <li class="list-group-item active">
                 <label [ngClass]="{'checked': todo.done}">{{ todo.title }}</label>
                 <button (click)="deleteTodo(i)" class="btn btn-danger btn-drop"

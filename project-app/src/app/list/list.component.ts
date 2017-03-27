@@ -1,8 +1,8 @@
-import { Component, OnInit }					from '@angular/core';
+import { Component, OnInit }					          from '@angular/core';
 import { Router }                               from '@angular/router';
 
 import { Item }                                 from './../item.model';
-import { FirebaseService }   					from './../../environments/firebase.service';
+import { FirebaseService }   					          from './../../environments/firebase.service';
 import { LocalStorageService }                  from './../localstorage.service';
 
 import { AngularFire, FirebaseListObservable }  from 'angularfire2';
@@ -22,7 +22,7 @@ export class ListComponent implements OnInit {
  //        this.myList = af.database.list('heroes/')
  //    }
 /*    FIM FIREBASE    */
-    
+
     private objects: any;
 
     selectedData: Item;
